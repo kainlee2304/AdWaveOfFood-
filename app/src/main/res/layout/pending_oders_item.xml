@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="8"
-                android:textColor="@color/textColor"
+                android:textColor="@color/Color"
                 app:layout_constraintBottom_toBottomOf="@+id/textView3"
                 app:layout_constraintStart_toEndOf="@+id/textView3" />
 
@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:fontFamily="@font/yeonsung_regular"
+                android:textColor="@color/endColor"
                 android:text="Name Customer"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/pendingOredarQuantity"
@@ -67,6 +68,7 @@
                 android:fontFamily="@font/yeonsung_regular"
                 android:text="Quantity"
                 android:textSize="16sp"
+                android:textColor="@color/endColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/customerName"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -80,7 +82,7 @@
                 android:layout_marginEnd="32dp"
                 android:text="Accept"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/Color"
                 android:fontFamily="@font/yeonsung_regular"
                 android:textSize="14sp"
                 android:background="@drawable/addtocartshape"

@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="$ 35"
-                android:textColor="@color/textColor"
+                android:textColor="@color/Color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/foodImageView"
                 app:layout_constraintTop_toBottomOf="@+id/foodNameTextView" />
@@ -54,6 +54,7 @@
                 android:fontFamily="@font/yeonsung_regular"
                 android:text="Spacy fresh crab"
                 android:textSize="16sp"
+                android:textColor="@color/endColor"
                 app:layout_constraintBottom_toTopOf="@+id/foodPriceView"
                 app:layout_constraintStart_toEndOf="@+id/foodImageView"
                 app:layout_constraintTop_toTopOf="parent" />

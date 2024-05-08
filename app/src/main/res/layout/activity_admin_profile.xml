@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/yeonsung_regular"
         android:text="Admin Profile"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.425"
@@ -82,7 +82,7 @@
             android:fontFamily="@font/yeonsung_regular"
             android:paddingLeft="8dp"
             android:text="Name"
-            android:textColor="@color/black" />
+            android:textColor="@color/textColor" />
 
         <EditText
             android:id="@+id/name"
@@ -91,7 +91,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:fontFamily="@font/lato_regular"
+            android:fontFamily="@font/yeonsung_regular"
+            android:textColor="@color/textColor"
             android:inputType="text"
             android:text="Name" />
     </LinearLayout>
@@ -105,7 +106,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/edittextshape"
         android:gravity="center_vertical"
-
+        android:textColor="@color/textColor"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -133,7 +134,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/yeonsung_regular"
             android:inputType="textMultiLine"
             android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
     </LinearLayout>
@@ -163,7 +165,7 @@
             android:fontFamily="@font/yeonsung_regular"
             android:paddingLeft="8dp"
             android:text="Email"
-            android:textColor="@color/black" />
+            android:textColor="@color/textColor"/>
 
         <EditText
             android:id="@+id/email"
@@ -172,7 +174,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:fontFamily="@font/lato_regular"
+            android:fontFamily="@font/yeonsung_regular"
+            android:textColor="@color/textColor"
             android:inputType="textEmailAddress"
             android:text="lorem ipsum@gmail.com" />
     </LinearLayout>
@@ -200,8 +203,9 @@
             android:background="@drawable/edittextshape"
             android:fontFamily="@font/yeonsung_regular"
             android:paddingLeft="8dp"
+            android:textColor="@color/textColor"
             android:text="Phone"
-            android:textColor="@color/black" />
+             />
 
         <EditText
             android:id="@+id/phone"
@@ -210,7 +214,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/yeonsung_regular"
             android:inputType="phone"
             android:text="123456789" />
     </LinearLayout>
@@ -239,7 +244,7 @@
             android:fontFamily="@font/yeonsung_regular"
             android:paddingLeft="8dp"
             android:text="Password"
-            android:textColor="@color/black" />
+            android:textColor="@color/textColor" />
 
         <EditText
             android:id="@+id/password"
@@ -248,7 +253,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/yeonsung_regular"
             android:inputType="textPassword"
             android:text="TextView" />
 
@@ -262,33 +268,16 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/edittextshape"
+        android:background="@drawable/addtocartshape"
         android:fontFamily="@font/yeonsung_regular"
         android:text="Save Information"
-        android:textColor="@color/textColor"
+        android:textColor="@color/Color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
     </androidx.appcompat.widget.AppCompatButton>
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:fontFamily="@font/yeonsung_regular"
-        android:text="Design By\nNguyen"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SaveInformation"
-        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
