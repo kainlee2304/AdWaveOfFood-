@@ -1,21 +1,30 @@
 package com.example.adminwaveoffood.adapter
 
 import android.content.Context
-import android.os.Message
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.adminwaveoffood.databinding.ActivityCreateUserBinding
+import com.bumptech.glide.Glide
 import com.example.adminwaveoffood.databinding.PendingOdersItemBinding
 
 
 class PendingOrderAdapter(
-    private val customerNames:ArrayList<String>,
-    private val quantity:ArrayList<String>,
-    private val foodImage:ArrayList<Int>,
-    private val context: Context
+    private val context: Context,
+    private val customerNames:MutableList<String>,
+    private val quantity:MutableList<String>,
+    private val foodImage: MutableList<String>,
+    private val itemClicked: OnItemClicked,
 ):RecyclerView.Adapter<PendingOrderAdapter.PendingOrderViewHolder>() {
+
+    interface OnItemClicked{
+        fun onItemClickListener(position: Int)
+        fun onItemAcceptClickListener(position: Int)
+        fun onItemDispatchClickListener(position: Int)
+
+
+    }
 
 
     override fun onCreateViewHolder(
@@ -40,10 +49,12 @@ class PendingOrderAdapter(
             binding.apply {
                 customerName.text = customerNames[position]
                 pendingOredarQuantity.text=quantity[position]
-                orderfoodImage.setImageResource(foodImage[position])
+                var uriString = foodImage[position]
+                var uri=Uri.parse(uriString)
+                Glide.with(context).load(uri).into(orderfoodImage)
                 orderedAcceptButton.apply {
                     if(!isAccepted){
-                        text="Accepted"
+                        text="Accept"
                     }else{
                         text="Dispatch"
                     }
@@ -52,13 +63,18 @@ class PendingOrderAdapter(
                             text="Dispatch"
                             isAccepted = true
                             showToast("Order is accepted")
+                            itemClicked.onItemAcceptClickListener(position)
                         }else{
                             customerNames.removeAt(adapterPosition)
                             notifyItemRemoved(adapterPosition)
                             showToast("Order is dispatched ")
+                            itemClicked.onItemDispatchClickListener(position)
                         }
 
                     }
+                }
+                itemView.setOnClickListener{
+                    itemClicked.onItemClickListener(position)
                 }
 
             }

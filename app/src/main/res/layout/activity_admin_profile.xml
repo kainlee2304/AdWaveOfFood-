@@ -29,17 +29,17 @@
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="@+id/backButton" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="44dp"
-        android:fontFamily="@font/yeonsung_regular"
-        android:textSize="16sp"
-        android:text="Edit Your Profile "
-        android:textColor="@color/textColor"
-        app:layout_constraintStart_toStartOf="@+id/backButton"
-        app:layout_constraintTop_toBottomOf="@+id/adminProfile" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="44dp"-->
+<!--        android:fontFamily="@font/yeonsung_regular"-->
+<!--        android:textSize="16sp"-->
+<!--        android:text="Edit Your Profile "-->
+<!--        android:textColor="@color/textColor"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/backButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/adminProfile" />-->
 
     <TextView
         android:id="@+id/editButton"
@@ -86,15 +86,15 @@
 
         <EditText
             android:id="@+id/name"
+            android:paddingStart="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
             android:fontFamily="@font/yeonsung_regular"
-            android:textColor="@color/textColor"
             android:inputType="text"
-            android:text="Name" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -130,14 +130,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:paddingStart="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:textColor="@color/textColor"
             android:fontFamily="@font/yeonsung_regular"
-            android:inputType="textMultiLine"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
+            android:inputType="textMultiLine"/>
     </LinearLayout>
 
     <LinearLayout
@@ -174,10 +173,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:paddingStart="5dp"
             android:fontFamily="@font/yeonsung_regular"
-            android:textColor="@color/textColor"
             android:inputType="textEmailAddress"
-            android:text="lorem ipsum@gmail.com" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -214,10 +213,11 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:textColor="@color/textColor"
+            android:paddingStart="5dp"
+
             android:fontFamily="@font/yeonsung_regular"
             android:inputType="phone"
-            android:text="123456789" />
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -236,7 +236,7 @@
         app:layout_constraintTop_toBottomOf="@id/linear4">
 
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="16sp"
@@ -253,7 +253,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:ems="10"
-            android:textColor="@color/textColor"
+            android:paddingStart="5dp"
             android:fontFamily="@font/yeonsung_regular"
             android:inputType="textPassword"
             android:text="TextView" />
@@ -261,23 +261,21 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/SaveInformation"
+        android:id="@+id/saveInfoButton"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="56dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/addtocartshape"
         android:fontFamily="@font/yeonsung_regular"
         android:text="Save Information"
         android:textColor="@color/Color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-    </androidx.appcompat.widget.AppCompatButton>
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
