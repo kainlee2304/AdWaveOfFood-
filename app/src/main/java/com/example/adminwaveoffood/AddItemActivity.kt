@@ -32,6 +32,7 @@ class AddItemActivity : AppCompatActivity() {
     private val binding:ActivityAddItemBinding by lazy {
         ActivityAddItemBinding.inflate(layoutInflater)
     }
+    //khởi tạo các đối tượng Firebase.
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -40,9 +41,9 @@ class AddItemActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         // Intialize Firebase database instance
         database = FirebaseDatabase.getInstance()
-
+        //Đặt sự kiện click cho các nút "AddItemButton", "selectImage", và "backButton".
         binding.AddItemButton.setOnClickListener{
-            // Get Data from Filed
+            // Get Data from truong nhap lieu
             foodName = binding.foodName.text.toString().trim()
             foodPrice = binding.foodPrice.text.toString().trim()
             foodDescription = binding.description.text.toString().trim()
@@ -57,6 +58,7 @@ class AddItemActivity : AppCompatActivity() {
             }
         }
         binding.selectImage.setOnClickListener {
+            // Khởi chạy bộ chọn tệp để chọn một hình ảnh
             pickImage.launch("image/*")
         }
 
@@ -90,33 +92,41 @@ class AddItemActivity : AppCompatActivity() {
                         foodIngredient = foodIngredient,
                         foodImage = downloadUrl.toString(),
                     )
+                    // Kiểm tra newItemKey không null trước khi thêm vào Firebase
                     newItemKey?.let { key ->
+                        // Thêm mục mới vào Firebase tại vị trí xác định bởi key
                         menuRef.child(key).setValue(newItem).addOnSuccessListener {
+                            // Hiển thị thông báo khi dữ liệu được tải lên thành công
                             Toast.makeText(this, "data upload successfully", Toast.LENGTH_SHORT)
                                 .show()
                         }
                             .addOnFailureListener {
+                                // Hiển thị thông báo khi dữ liệu tải lên thất bại
                                 Toast.makeText(this, "data upload failed", Toast.LENGTH_SHORT)
                                     .show()
                             }
                     }
                 }
+                // Xử lý khi việc tải lên hình ảnh thất bại
             } .addOnFailureListener {
+                // Hiển thị thông báo khi tải lên hình ảnh thất bại
                         Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show()
                     }
+            // Xử lý khi không có hình ảnh nào được chọn
             } else {
+                // // Hiển thị thông báo khi không có hình ảnh nào được chọn
                             Toast.makeText(this, "Please slect an image", Toast.LENGTH_SHORT).show()
             }
 
             }
 
-
-
+//chọn một hình ảnh từ bộ nhớ của thiết bị trong một ứng dụng
+//ActivityResultContracts.GetContent() :mở bộ chọn tệp của thiết bị  de chon anh
     val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()){
             uri ->
         if (uri != null) {
-        binding.selectedImage.setImageURI(uri)
-            foodImageUri = uri
+        binding.selectedImage.setImageURI(uri) // Đặt hình ảnh được chọn vào ImageView
+            foodImageUri = uri // Lưu URI để sử dụng sau này
     }
     }
 

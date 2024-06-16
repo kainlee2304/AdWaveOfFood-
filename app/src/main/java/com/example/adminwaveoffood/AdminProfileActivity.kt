@@ -13,9 +13,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class AdminProfileActivity : AppCompatActivity() {
+    // Sử dụng view binding để liên kết giao diện người dùng
     private val binding:ActivityAdminProfileBinding by lazy {
         ActivityAdminProfileBinding.inflate(layoutInflater)
     }
+    // Khai báo các biến cho Firebase
     private lateinit var database:FirebaseDatabase
     private lateinit var auth:FirebaseAuth
     private lateinit var adminReference:DatabaseReference
@@ -23,27 +25,28 @@ class AdminProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
+// Khởi tạo Firebase Auth và Database
         auth=FirebaseAuth.getInstance()
         database=FirebaseDatabase.getInstance()
         adminReference=database.reference.child("user")
 
-
+        // Xử lý sự kiện khi nút quay lại được nhấn
         binding.backButton.setOnClickListener{
             finish()
         }
+        // Xử lý sự kiện khi nút lưu thông tin được nhấn
         binding.saveInfoButton.setOnClickListener {
             updateUserData()
         }
 
-
+// Vô hiệu hóa các trường nhập liệu và nút lưu thông tin ban đầu
         binding.name.isEnabled = false
         binding.address.isEnabled = false
         binding.email.isEnabled = false
         binding.phone.isEnabled = false
         binding.password.isEnabled = false
         binding.saveInfoButton.isEnabled=false
-
+        // Xử lý sự kiện khi nút chỉnh sửa được nhấn
         var isEnable = false
         binding.editButton.setOnClickListener {
             isEnable = ! isEnable
@@ -58,13 +61,13 @@ class AdminProfileActivity : AppCompatActivity() {
             }
             binding.saveInfoButton.isEnabled=isEnable
         }
-
+// Lấy dữ liệu người dùng từ Firebase
         retrieveUserData()
 
     }
 
 
-
+    // Hàm lấy dữ liệu người dùng từ Firebase
     private fun retrieveUserData() {
         var currentUserUid=auth.currentUser?.uid
         if (currentUserUid!=null){
@@ -81,6 +84,7 @@ class AdminProfileActivity : AppCompatActivity() {
                         setDataToTextView(ownerName,address,email,phone,password)
                     }
                 }
+                // Xử lý khi có lỗi xảy ra
                 override fun onCancelled(error: DatabaseError) {
 
                 }
@@ -89,7 +93,7 @@ class AdminProfileActivity : AppCompatActivity() {
         }
 
     }
-
+    // Hàm đặt dữ liệu vào các trường TextView
     private fun setDataToTextView(ownerName: Any?, address: Any?, email: Any?, phone: Any?, password: Any?) {
         binding.name.setText(ownerName.toString())
         binding.address.setText(address.toString())
@@ -98,7 +102,7 @@ class AdminProfileActivity : AppCompatActivity() {
         binding.password.setText(password.toString())
 
     }
-
+    // Hàm cập nhật dữ liệu người dùng
     private fun updateUserData() {
         var updateName=binding.name.text.toString()
         var updateEmail=binding.email.text.toString()
