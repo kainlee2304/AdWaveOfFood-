@@ -41,10 +41,14 @@ class PendingOrderAdapter(
     ) {
         holder.bind(position)
     }
-
+    // Trả về số lượng item trong danh sách
     override fun getItemCount(): Int = customerNames.size
+    // Lớp ViewHolder cho mỗi item trong RecyclerView
     inner class PendingOrderViewHolder(private val binding: PendingOdersItemBinding):RecyclerView.ViewHolder(binding.root) {
+        // Biến để theo dõi trạng thái đơn hàng đã được chấp nhận hay chưa
         private var isAccepted = false
+
+        // Gắn dữ liệu vào ViewHolder
         fun bind(position: Int){
             binding.apply {
                 customerName.text = customerNames[position]
@@ -52,11 +56,13 @@ class PendingOrderAdapter(
                 var uriString = foodImage[position]
                 var uri=Uri.parse(uriString)
                 Glide.with(context).load(uri).into(orderfoodImage)
+
+                // Xử lý sự kiện click cho nút chấp nhận/đã gửi
                 orderedAcceptButton.apply {
                     if(!isAccepted){
-                        text="Accept"
+                        text="Accept"// Nếu chưa chấp nhận, hiển thị nút Accept
                     }else{
-                        text="Dispatch"
+                        text="Dispatch"// Nếu đã chấp nhận, hiển thị nút Dispatch
                     }
                     setOnClickListener{
                         if (!isAccepted){
@@ -65,6 +71,7 @@ class PendingOrderAdapter(
                             showToast("Order is accepted")
                             itemClicked.onItemAcceptClickListener(position)
                         }else{
+                            // Xóa đơn hàng khỏi danh sách và thông báo rằng đã gửi hàng
                             customerNames.removeAt(adapterPosition)
                             notifyItemRemoved(adapterPosition)
                             showToast("Order is dispatched ")
@@ -73,6 +80,7 @@ class PendingOrderAdapter(
 
                     }
                 }
+                // Xử lý sự kiện click vào item trong RecyclerView
                 itemView.setOnClickListener{
                     itemClicked.onItemClickListener(position)
                 }
@@ -80,6 +88,7 @@ class PendingOrderAdapter(
             }
 
         }
+        // Phương thức hiển thị toast message
         private fun showToast(message: String) {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }

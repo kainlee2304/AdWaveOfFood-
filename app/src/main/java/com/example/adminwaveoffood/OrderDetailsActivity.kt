@@ -12,6 +12,7 @@ class OrderDetailsActivity : AppCompatActivity() {
     private val binding: ActivityOrderDetailsBinding by lazy {
         ActivityOrderDetailsBinding.inflate(layoutInflater)
     }
+    // Khai báo các biến và view binding cho Activity
     private var userName : String?= null
     private var address : String?= null
     private var phoneNumber : String?=null
@@ -27,13 +28,15 @@ class OrderDetailsActivity : AppCompatActivity() {
         binding.buttonBack.setOnClickListener {
             finish()
         }
+        // Lấy dữ liệu từ Intent gửi từ Activity trước
         getDataFromIntent()
     }
-
+    // Hàm lấy dữ liệu từ Intent
     private fun getDataFromIntent() {
+        // Lấy đối tượng OrderDetails từ Intent
         val receivedOrderDetails = intent.getSerializableExtra("UserOrderDetails") as OrderDetails
         receivedOrderDetails?.let { orderDetails ->
-
+            // Gán các giá trị từ đối tượng OrderDetails vào các biến trong Activity
             userName = receivedOrderDetails.userName
             foodNames = receivedOrderDetails. foodNames as ArrayList<String>
             foodImages = receivedOrderDetails.foodImages as ArrayList<String>
@@ -42,19 +45,19 @@ class OrderDetailsActivity : AppCompatActivity() {
             phoneNumber = receivedOrderDetails.phoneNumber
             foodPrices = receivedOrderDetails.foodPrices as ArrayList<String>
             totalPrice = receivedOrderDetails.totalPrice
-
+            // Gọi các hàm để hiển thị thông tin người dùng và thiết lập Adapter cho RecyclerView
             setUserDetail()
             setAdapter()
         }
     }
-
+    // Hàm hiển thị thông tin người dùng lên giao diện
     private fun setUserDetail() {
         binding.name.text = userName
         binding.address.text = address
         binding.phone.text = phoneNumber
         binding.totalPay.text = totalPrice
     }
-
+    // Hàm thiết lập Adapter cho RecyclerView hiển thị chi tiết đơn hàng
     private fun setAdapter() {
         binding.OrderDetailRecyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = OrderDetailsAdapter(this, foodNames, foodImages, foodQuantity, foodPrices)
